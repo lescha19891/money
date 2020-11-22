@@ -41,14 +41,11 @@ add_action('after_setup_theme','rubToMoney');
 		"RUR"=>$row [ 'RUR']
 		];
 	 //Очистка базы если записей больше 10
-
 		if ($row ['ID']>10){
 			$sql= "DROP TABLE  money_to_rub ";
 			mysqli_query($conn, $sql);
 		}	
-			
 		mysqli_close($conn);
-		var_dump($money_rub);
 		return  $money_rub; 
 	}	
 	 //Создание меню
@@ -64,5 +61,4 @@ add_action('after_setup_theme','rubToMoney');
             83
 		);
 	})
-		
 ?>
