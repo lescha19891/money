@@ -26,7 +26,7 @@
 		$RUB=$rub["Cur_OfficialRate"];
 		$USD=$usd["Cur_OfficialRate"];
 		$EUR=$eur["Cur_OfficialRate"];
-		$money=["RUB"=>$RUB,"USD"=>"$USD","EUR=>$EUR"];
+		$money=["'100'RUB"=>$RUB,"USD"=>"$USD","EUR=>$EUR"];
 		update_option('kurs',$money);
 	}
 	//Создание меню
