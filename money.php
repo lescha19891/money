@@ -26,12 +26,12 @@
 		$RUB=$rub["Cur_OfficialRate"];
 		$USD=$usd["Cur_OfficialRate"];
 		$EUR=$eur["Cur_OfficialRate"];
-		$money=["'100'RUB"=>$RUB,"USD"=>"$USD","EUR=>$EUR"];
+		$date=$usd["Date"];
+		$money=["RUB"=>"$RUB","USD"=>"$USD","EUR"=>"$EUR", "date"=>"$date"];
 		update_option('kurs',$money);
 	}
 	//Создание меню
 	add_action( 'admin_menu', function(){
-		$money=get_option('kurs');
 	        add_menu_page(
             'rub_to_money',
             'roublerate',
