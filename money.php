@@ -10,11 +10,19 @@
 	add_action('update_curse', 'updaterubusdeur');
 	function updaterubusdeur(){
 	//получение данных с сайта НБРБ и запись в wp
-		$url=['USD'=>'https://www.nbrb.by/api/exrates/rates/usd?parammode=2',
+		$url='https://www.nbrb.by/api/exrates/rates?periodicity=0';
+		/*['USD'=>'https://www.nbrb.by/api/exrates/rates/usd?parammode=2',
 		 'EUR'=>'https://www.nbrb.by/api/exrates/rates/eur?parammode=2',
 		 'RUB'=>'https://www.nbrb.by/api/exrates/rates/rub?parammode=2'
-		];
-		$usd=wp_remote_get( $url['USD'] );
+		];*/
+		$money=wp_remote_get($url);
+		$money=wp_remote_retrieve_body($money);
+		$money=json_decode($money, true);
+		$USD=$money[4]['Cur_OfficialRate'];
+		$EUR=$money[5]['Cur_OfficialRate'];
+		$RUB=$money[16]['Cur_OfficialRate'];
+		
+		/*$usd=wp_remote_get( $url['USD'] );
 		$usd=wp_remote_retrieve_body($usd);
 		$usd=json_decode($usd, true);
 		$eur=wp_remote_get( $url['EUR'] );
@@ -26,8 +34,8 @@
 		$RUB=$rub["Cur_OfficialRate"];
 		$USD=$usd["Cur_OfficialRate"];
 		$EUR=$eur["Cur_OfficialRate"];
-		$date=$usd["Date"];
-		$money=["RUB"=>"$RUB","USD"=>"$USD","EUR"=>"$EUR", "date"=>"$date"];
+		$date=$usd["Date"];*/
+		$money=["RUB"=>"$RUB","USD"=>"$USD","EUR"=>"$EUR", "date"=>date("Y/m/d")];
 		update_option('kurs',$money);
 	}
 	//Создание меню

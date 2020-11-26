@@ -4,5 +4,4 @@
     <h2><?php echo "1 USD: $money[USD]"?></h2>
     <h2><?php echo "1 EUR: $money[EUR]"?></h2>
     <h2><?php echo "100 RUB: $money[RUB]"?></h2>
-   <?php var_dump($money);
-    ?>
+   
