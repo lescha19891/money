@@ -1,7 +1,57 @@
-    <h1 class="wp-heading">КУРСЫ ВАЛЮТ</h1>
-    <?PHP $money=GET_OPTION('kurs');?>
-    <h2><?php echo "update date: $money[date]"?></h2>
-    <h2><?php echo "1 USD: $money[USD]"?></h2>
-    <h2><?php echo "1 EUR: $money[EUR]"?></h2>
-    <h2><?php echo "100 RUB: $money[RUB]"?></h2>
-   <?php var_dump($money)?>
+    <?php $currencies = get_option('kurs');?>
+    <div class="wrap">
+        <h1 class="wp-heading-inline">Курсы валют НБРБ</h1>
+        <span class="date"><?=$currencies[date];?></span>
+        <table class="widefat fixed"
+        cellspacing="0">
+        <thead>
+            <tr>
+                <th
+                    class="manage-column column-categories"
+                    scope="col">Валюта</th>
+                <th
+                    class="manage-column column-categories"
+                    scope="col">Значение</th>
+                <th
+                    class="manage-column"
+                    scope="col">Дополнительная информация</th>
+            </tr>
+        </thead>
+        <tbody>
+                <tr class="alternate">
+                    <td
+                        class="manage-column column-categories"
+                        scope="col">USD</td>
+                    <td 
+                        class="manage-column column-categories"
+                        scope="col"><?=$currencies[USD];?></td>
+                    <td
+                        class="manage-column"
+                        scope="col"></td>
+                </tr>
+                <tr>
+                    <td
+                        class="manage-column "
+                        scope="col">EUR</td>
+                    <td 
+                        class="manage-column column-categories"
+                        scope="col"><?=$currencies[EUR];?></td>
+                    <td
+                        class="manage-column"
+                        scope="col"></td>
+                </tr>
+                <tr class="alternate">
+                    <td
+                        class="manage-column"
+                        scope="col">RUB</td>
+                    <td 
+                        class="manage-column column-categories"
+                        scope="col"><?=$currencies[RUB];?></td>
+                    <td
+                        class="manage-column"
+                        scope="col">За 100 RUB</td>
+                </tr>
+        </tbody>
+    </table>
+    </div>
+    
