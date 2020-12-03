@@ -1,7 +1,7 @@
-    <?php $currencies = get_option('kurs');?>
+    <?php $result = get_option('kurs');?>
     <div class="wrap">
         <h1 class="wp-heading-inline">Курсы валют НБРБ</h1>
-        <span class="date"><?=$currencies[date];?></span>
+        <span class="date"><?=$result[date];?></span>
         <table class="widefat fixed"
         cellspacing="0">
         <thead>
@@ -18,39 +18,21 @@
             </tr>
         </thead>
         <tbody>
-                <tr class="alternate">
-                    <td
-                        class="manage-column column-categories"
-                        scope="col">USD</td>
-                    <td 
-                        class="manage-column column-categories"
-                        scope="col"><?=$currencies[USD];?></td>
-                    <td
-                        class="manage-column"
-                        scope="col"></td>
-                </tr>
-                <tr>
-                    <td
-                        class="manage-column "
-                        scope="col">EUR</td>
-                    <td 
-                        class="manage-column column-categories"
-                        scope="col"><?=$currencies[EUR];?></td>
-                    <td
-                        class="manage-column"
-                        scope="col"></td>
-                </tr>
-                <tr class="alternate">
-                    <td
-                        class="manage-column"
-                        scope="col">RUB</td>
-                    <td 
-                        class="manage-column column-categories"
-                        scope="col"><?=$currencies[RUB];?></td>
-                    <td
-                        class="manage-column"
-                        scope="col">За 100 RUB</td>
-                </tr>
+                <?php for($i = 0; $i < count($result['currencies']); $i++) : 
+                    $currency = $result['currencies'][$i];
+                ?>
+                    <tr class="alternate">
+                        <td
+                            class="manage-column column-categories"
+                            scope="col"><?=$currency['Cur_Abbreviation']?></td>
+                        <td 
+                            class="manage-column column-categories"
+                            scope="col"><?=$currency['Cur_OfficialRate'];?></td>
+                        <td
+                            class="manage-column"
+                            scope="col"><?=$currency['Cur_OfficialRate'];?> BYN за <?=$currency['Cur_Scale'];?> <?=$currency['Cur_Abbreviation']?></td>
+                    </tr>
+                <?php endfor;?>
         </tbody>
     </table>
     </div>
