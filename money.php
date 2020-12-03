@@ -23,7 +23,8 @@
 		];
 		foreach($currencies as $currency){
 			$result['currencies][] = [
-				$currency['Cur_Abbreviation'] => $currency['Cur_OfficialRate']
+				'Cur_Abbreviation' => $currency['Cur_Abbreviation'],
+				'Cur_OfficialRate' => $currency['Cur_OfficialRate']
 			];
 		}
 		
