@@ -1,7 +1,7 @@
     <?php $result = get_option('kurs');?>
     <div class="wrap">
         <h1 class="wp-heading-inline">Курсы валют НБРБ</h1>
-        <span class="date"><?=$result[date];?></span>
+        <span class="date"><?=$result['date'];?></span>
         <table class="widefat fixed"
         cellspacing="0">
         <thead>

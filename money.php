@@ -18,11 +18,12 @@
 		$responseBody = wp_remote_retrieve_body($response);
 		$currencies = json_decode($responseBody, true);
 		$result = [
-			'date' => $currencies[0]['Date'];
+			'date' => $currencies[0]['Date'],
 			'currencies' => []	
-		];
+        ];
+        
 		foreach($currencies as $currency){
-			$result['currencies][] = [
+			$result['currencies'][] = [
 				'Cur_Abbreviation' => $currency['Cur_Abbreviation'],
 				'Cur_OfficialRate' => $currency['Cur_OfficialRate'],
 				'Cur_Scale' => $currency['Cur_Scale']
