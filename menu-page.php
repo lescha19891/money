@@ -17,8 +17,8 @@
                     scope="col">Дополнительная информация</th>
             </tr>
         </thead>
-        <tbody>
-                <?php for($i = 0; $i < count($result['currencies']); $i++) : 
+            <tbody>
+                <?php for($i = 1; $i < count($result['currencies']); $i++) : 
                     $currency = $result['currencies'][$i];
                 ?>
                     <tr class="alternate">

@@ -1,9 +1,15 @@
 <?php
-	/*	Plugin Name: money	*/
+	/*	Plugin Name: Currency BYN	
+	Plugin URI: https://wordpress.org/plugins/Currency BYN
+	Description: Shows currency exchange rates for Belarus
+	Version: 0.1.0
+	Author: LS
+	Author URI: 
+	Text Domain:
+	*/
 	register_activation_hook(__FILE__,'activationmoney');
 
  	function activationmoney(){
-	//переустанавливаем крон задачи относящиеся к плагину
 		wp_clear_scheduled_hook('update_curse');
 		wp_schedule_event( time(), 'twicedaily', 'update_curse');
 		updaterubusdeur();
@@ -12,17 +18,15 @@
 	add_action('update_curse', 'updaterubusdeur');
 
 	function updaterubusdeur(){
-		//получение данных с сайта НБРБ и запись в wp
 		$url = 'https://www.nbrb.by/api/exrates/rates?periodicity=0';
 		$response = wp_remote_get($url);
 		$responseBody = wp_remote_retrieve_body($response);
 		$currencies = json_decode($responseBody, true);
 		$result = [
-			'date' => $currencies[0]['Date'],
+			'date' => $currencies[0]=date("d:m:Y"),
 			'currencies' => []	
         ];
-        
-		foreach($currencies as $currency){
+        foreach($currencies as $currency){
 			$result['currencies'][] = [
 				'Cur_Abbreviation' => $currency['Cur_Abbreviation'],
 				'Cur_OfficialRate' => $currency['Cur_OfficialRate'],
@@ -31,13 +35,21 @@
 		}
 		
 		update_option('kurs', $result);
-	}
-	
-	//Создание меню
+	} 
+	function GET_currency($rate){
+		$result = get_option('kurs');
+		foreach ($result['currencies'] as $k=>$v){
+			if ($result['currencies']["$k"]['Cur_Abbreviation']==$rate){
+				$res=$result['currencies']["$k"]['Cur_OfficialRate'];
+			}
+		}
+		return $res;
+		}
+
 	add_action( 'admin_menu', function(){
 	        add_menu_page(
-            'rub_to_money',
-            'roublerate',
+            'Currency BYN',
+            'Currency BYN',
             'manage_options',
             'money/menu-page.php',
             '',
@@ -46,7 +58,6 @@
 		);
 	});
 	
-	//удаление плагина
 	register_deactivation_hook( __FILE__, 'money_del' );
 	
 	function money_del() {
