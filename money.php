@@ -33,12 +33,12 @@
 			];
 		}
 		
-		update_option('kurs', $result);
+		update_option('ls_cb_kurs', $result);
 	} 
 
 	function ls_cb_get_currency_by_abbreviation($rate){
 		$res=null;
-		$result = get_option('kurs');
+		$result = get_option('ls_cb_kurs');
 		foreach ($result['currencies'] as $k=>$v){
 			if ($result['currencies']["$k"]['Cur_Abbreviation']==$rate){
 				$res=$result['currencies']["$k"]['Cur_OfficialRate'];
@@ -49,7 +49,7 @@
 	}
 
 	function ls_cb_get_currencies(){
-		return get_option('kurs')['currencies'];
+		return get_option('ls_cb_kurs')['currencies'];
 	}
 
 	function ls_cb_get_usd_rate(){

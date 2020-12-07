@@ -1,4 +1,4 @@
-    <?php $result = get_option('kurs');?>
+    <?php $result = get_option('ls_cb_kurs');?>
     <div class="wrap">
         <h1 class="wp-heading-inline">Курсы валют НБРБ</h1>
         <span class="date"><?=$result['date'];?></span>
