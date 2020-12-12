@@ -1,9 +1,12 @@
 <?php
-	/*	Plugin Name: Currency BYN	
+	/*	Plugin Name: LS WP Currency BYN	
+		Plugin URI: https://wordpress.org/plugins/ls-wp-currency-byn
 		Description: Shows currency exchange rates for Belarus
 		Version: 1.0.0
-		Author: Lightning-Soft
+		Author: Lightning Soft
+		Author URI: https://lightning-soft.com/
 		Text Domain: ls_cb
+		License: GPL2
 	*/
 
 	register_activation_hook(__FILE__,'ls_cb_activationmoney');
@@ -50,6 +53,7 @@
 
 	function ls_cb_get_currencies(){
 		return get_option('ls_cb_kurs')['currencies'];
+
 	}
 
 	function ls_cb_get_usd_rate(){
@@ -75,10 +79,4 @@
             83
 		);
 	});
-	
-	register_deactivation_hook( __FILE__, 'ls_cb_money_del' );
-	
-	function ls_cb_money_del() {
-		wp_clear_scheduled_hook( 'ls_cb_update_curse' );
-	}
 ?>
