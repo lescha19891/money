@@ -1,5 +1,6 @@
 <?php
-	/*	Plugin Name: LS WP Currency BYN	
+    /*	
+        Plugin Name: LS WP Currency BYN	
 		Plugin URI: https://wordpress.org/plugins/ls-wp-currency-byn
 		Description: Shows currency exchange rates for Belarus
 		Version: 1.0.0
