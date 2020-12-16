@@ -11,7 +11,11 @@ Shows currency exchange rates for Belarus
 
 == Description ==
 
-Shows currency exchange rates for Belarus
+Shows currency exchange rates for Belarus.
+We use the web service of the National Bank of the Republic of Belarus, 
+which sets the current exchange rates for each day for the Republic of Belarus and provides a free API for developers.
+To keep the exchange rate up to date, our plugin makes a request twice a day and stores the result in a database for use on the website.
+Service Link: https://www.nbrb.by/apihelp/exrates
 
 == Installation ==
 
