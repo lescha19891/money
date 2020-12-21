@@ -27,3 +27,9 @@ Upload the LS WP Currency BYN plugin to your blog and activate it.
 * 
 Release Date - 17 December 2020 
 *
+
+= 1.0.1 =
+* 
+21 December 2020 
+Bug fix at currency admin menu page and icon view
+*

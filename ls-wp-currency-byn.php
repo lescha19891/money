@@ -10,6 +10,8 @@
 		License: GPL2
 	*/
 
+	define('LS_WP_CURRENCY_BYN_NAME', basename( __DIR__ ));
+
 	register_activation_hook(__FILE__,'ls_cb_activationmoney');
 
  	function ls_cb_activationmoney(){
@@ -71,12 +73,12 @@
 
 	add_action( 'admin_menu', function(){
 	        add_menu_page(
-            'Currency BYN',
-            'Currency BYN',
+            'LS WP Currency BYN',
+            'LS WP Currency BYN',
             'manage_options',
-            'money/menu-page.php',
+            LS_WP_CURRENCY_BYN_NAME . '/ls-wp-currency-byn-page.php',
             '',
-            plugins_url( 'money/images/menu-icon.svg' ),
+            plugins_url( 'images/menu-icon.svg', __FILE__ ),
             83
 		);
 	});
