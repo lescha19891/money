@@ -56,13 +56,18 @@
 	}
 	function ls_cb_conversion_price_in_abbreviation($rate,$price=1){
 		$res=null;
+		$rate=strtoupper($rate);
 		$result = get_option('ls_cb_kurs');
-		foreach ($result['currencies'] as $k=>$v){
-			if ($result['currencies']["$k"]['Cur_Abbreviation']==$rate){
-				$res=$result['currencies']["$k"]['ConversionBYN']*$price;
-				break;
+		if ($rate=='BYN'){
+			$res=1*$price;
+		} else{
+			foreach ($result['currencies'] as $k=>$v){
+				if ($result['currencies']["$k"]['Cur_Abbreviation']==$rate){
+					$res=$result['currencies']["$k"]['ConversionBYN']*$price;
+					break;
+				}
 			}
-		}
+		}	
 		return $res;
 	}
 
