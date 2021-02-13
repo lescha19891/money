@@ -35,7 +35,8 @@
 			$result['currencies'][] = [
 				'Cur_Abbreviation' => $currency['Cur_Abbreviation'],
 				'Cur_OfficialRate' => $currency['Cur_OfficialRate'],
-				'Cur_Scale' => $currency['Cur_Scale']
+				'Cur_Scale' => $currency['Cur_Scale'],
+				'ConversionBYN'=>(1/($currency['Cur_OfficialRate']/$currency['Cur_Scale']))
 			];
 		}
 		
@@ -51,6 +52,22 @@
 				break;
 			}
 		}
+		return $res;
+	}
+	function ls_cb_conversion_price_in_abbreviation($rate,$price=1){
+		$res=null;
+		$rate=strtoupper($rate);
+		$result = get_option('ls_cb_kurs');
+		if ($rate=='BYN'){
+			$res=1*$price;
+		} else{
+			foreach ($result['currencies'] as $k=>$v){
+				if ($result['currencies']["$k"]['Cur_Abbreviation']==$rate){
+					$res=$result['currencies']["$k"]['ConversionBYN']*$price;
+					break;
+				}
+			}
+		}	
 		return $res;
 	}
 
